@@ -8,7 +8,7 @@
 <br/><br/>
 <h3>Delete : {{ post.title }}</h3>
 
-
+{% if user.is_authenticated %}
 <br/>
 <div class="form-group">
 <form method="POST">
@@ -17,6 +17,10 @@
     <button class="btn btn-danger">Delete Post!</button>
 
 </div>
+{% else %}
 
+You'e not allowed here!
+
+{% endif %}
 
 {% endblock %}
