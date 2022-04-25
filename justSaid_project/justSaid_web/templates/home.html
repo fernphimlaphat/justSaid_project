@@ -1,9 +1,18 @@
-<h1>Post</h1>
+<!-- หน้า home -->
 
+{% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}   
+
+{% block content %}
+
+<h1>Post</h1>
 <ul>
+<!-- แสดง post  -->
 {% for post in object_list %}
-    <a><a href="{% url 'blog-detail' post.pk %}">{{ post.title }}</a> - {{ post.author.first_name }} {{ post.author.last_name }}<br/>
+    <li> <a><a href="{% url 'blog-detail' post.pk %}">{{ post.title }}</a> - {{ post.author.first_name }} {{ post.author.last_name }}<br/>
      {{ post.body }}</li>   
 
 {% endfor%}
 </ul>
+
+{% endblock %}
