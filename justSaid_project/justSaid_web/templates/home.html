@@ -9,7 +9,7 @@
 <ul>
 <!-- แสดง post  -->
 {% for post in object_list %}
-    <li> <a><a href="{% url 'blog-detail' post.pk %}">{{ post.title }}</a> - 
+    <li> <a><a href="{% url 'blog-detail' post.pk %}">{{ post.title }}</a> - {{ post.category }} -
         {{ post.author.first_name }} {{ post.author.last_name }} - 
         {{ post.post_date }}
 
