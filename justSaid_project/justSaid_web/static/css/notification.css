@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap");
+
+
+
+@media (min-width: 900px) {
+
+}
+
+@media (min-width: 900px) {
+    .notification-list .notification-list_detail {
+        margin-right: auto;
+        max-width: 700px;
+    }
+}
+@media (min-width: 500px) {
+    .notification-list .notification-list_detail {
+        margin-right: auto;
+        max-width: 100px;
+    }
+}
+
+.notification-list {
+	display: flex;
+	justify-content: space-between;
+    /* justify-content กำหนดลักษณะการจัดเรียง Element ระหว่างแถวในแนวแกนหลัก */
+	padding: 20px 25px;
+	border-bottom: 1.99px solid #FC4B32;
+}
+
+.notification-list--unread {
+    /* กดดูแล้วจะขึ้นแถบขวาสุดในการแจ้งเตือนนั้นๆ */
+	position: relative;
+	background: #FFE8D5;
+}
+.notification-list--unread:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: calc(100%);
+	border-left: 3.5px solid #FC4B32;
+}
+.notification-list .notification-list_img img {
+	height: 42px;
+	width: 42px;
+	border-radius: 50px;
+	margin-right: 20px;
+}
+.notification-list .notification-list_detail {
+	margin-right: auto;
+	max-width: 700px;
+}
+.notification-list .notification-list_detail p {
+	margin-bottom: 5px;
+	line-height: 1.2;
+}
+.notification-list .notification-list_detail .nt-link {
+	border-left: 3px solid #FC4B32;
+	line-height: 1.3;
+	padding-left: 10px;
+}
+
+hr.color {
+    color: #FFE8D5;
+}

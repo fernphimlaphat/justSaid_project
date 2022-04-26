@@ -4,23 +4,74 @@
 
 {% block content %}
 
-<h1>Delete post</h1>
-<br/><br/>
-<h3>Delete : {{ post.title }}</h3>
+<div class="w3-container w3-content">    
+    <div class="w3-row">
+        <!-- เอาไว้เลื่อนคอมลัมน์ -->
+        <div class="w3-col m2">
+        </div>
 
-{% if user.is_authenticated %}
-<br/>
-<div class="form-group">
-<form method="POST">
-    {% csrf_token %}
-    <strong>Are you sure?!</strong><br/><br/>
-    <button class="btn btn-danger">Delete Post!</button>
+        <!-- โพสต์ -->
+        <div class="w3-col m12">
+            <div class="w3-container w3-card w3-orange w3-round w3-margin"><br>
+                <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
 
+                <h4>By: {{ post.author.first_name }} {{ post.author.last_name }}</h4><br>
+                <br>
+                <hr class="w3-clear">
+                <h1 class="w3-bar-item w3-buttonw3-hover-none text-decoration-none"><h4 class="w3-text-orange">{{ post.title }}</h4><br></h1>
+                <p>{{ post.body }}</p>
+                  <div class="w3-row-padding" style="margin:0 -16px">
+                    <div class="w3-half">
+                      <img src="https://s.isanook.com/ca/0/ui/279/1396205/download20190701121212_1562562851.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                    </div>
+                    <div class="w3-half">
+                      <img src="https://s.isanook.com/ca/0/ui/279/1396205/s__152616983_1562561120.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+                  </div>
+                </div>
+            
+                <p class="w3-text-orange" >#{{ post.title_tag }}</p>
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-danger w3-margin-bottom w3-right " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Delete Post!
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Do you want to delete {{ post.title }} ?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+            {% if user.is_authenticated %}
+            <br/>
+
+            <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                <strong>Are you sure ?!</strong><br/><br/>
+                <hr>
+                <button class="btn btn-danger">Delete Post!</button>
+                <a href="{% url 'home' %}" class="btn btn-orange w3-right"><h6>Back</h6></a>
+
+            
+            </div>
+            {% else %}
+            
+            You'e not allowed here!
+            
+            {% endif %}
+            
+        </div>
+      </div>
+    </div>
+  </div>
+              </div>
+        </div>
+    </div>
 </div>
-{% else %}
-
-You'e not allowed here!
-
-{% endif %}
 
 {% endblock %}

@@ -13,6 +13,7 @@ from django.urls import reverse_lazy
 # Home page
 class HomeView(ListView):
     model = Post
+    form_class = PostForm
     template_name = 'home.html'
     ordering =['-post_date']
     #ordering =['id'] #เรียงโพสตามID->เลขมากอยู่ล่าง

@@ -1,20 +1,36 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Create New Blog Category{% endblock %}   
 
 
 {% block content %}
 
-<h1>Add Category</h1>
 <br/><br/>
 
-<!-- ฟอร์ม add post -->
-<div class="form-group">
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-secondary">Add Category</button>
 
+
+<div class="w3-container w3-content">    
+    <div class="w3-row">
+        <!-- เอาไว้เลื่อนคอมลัมน์ -->
+        <div class="w3-col m2">
+        </div>
+
+        <!-- โพสต์ -->
+        <div class="w3-col m12">
+            <div class="w3-container w3-card w3-orange w3-round w3-margin"><br>
+                <h1 class="w3-text-orange">Add Category</h1>
+
+                <br>
+                <hr class="w3-clear">
+                <!-- ฟอร์ม add post -->
+                    <div class="form-group">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button class="btn btn-orange"><h6>Add Category</h6></button>
+                    </div>
+              </div>
+        </div>
+    </div>
 </div>
-
-
 {% endblock %}

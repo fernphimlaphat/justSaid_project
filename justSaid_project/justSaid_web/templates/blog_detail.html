@@ -1,22 +1,57 @@
 <!-- เนื้อหาในblog -->
 
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}{{ post.title_tag }}{% endblock %}   
 {% block content %}
 
-<h1>{{ post.title }}</h1>
-<small>By: {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.post_date }} 
-    {% if user.is_authenticated %}
-    <a href="{% url 'update_post' post.pk %}">Edit</a>
-    <a href="{% url 'delete_post' post.pk %}">Delete</a>
-    {% endif %}
-</small><br/>
 
-<hr>
-<br/>
-{{ post.body }} <!-- {{ post.body }} safe ใช้HTMLได้-->
-<br/><br/>
-<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+<div class="w3-container w3-content">    
+    <div class="w3-row">
+        <!-- เอาไว้เลื่อนคอมลัมน์ -->
+        <div class="w3-col m2">
+        </div>
+
+        <!-- โพสต์ -->
+        <div class="w3-col m12">
+            <div class="w3-container w3-card w3-orange w3-round w3-margin"><br>
+                <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                <span class="w3-right w3-opacity">{{ post.post_date }}<button><a href="#" class="w3-button w3-hover-none" title="Report"><i class="fa fa-share-alt fa-2x"></i></a></button>
+                </span>
+
+                <h4>By: {{ post.author.first_name }} {{ post.author.last_name }}</h4><br>
+                                <!-- ลบ/แก้ไข -->
+                                {% if user.is_authenticated %}
+                                <a class="w3-right w3-margin-right w3-text-gray" href="{% url 'update_post' post.pk %}" title="Delete"><i class="fa fa-pencil fa-2x"></i></a>
+                                <a class="w3-right w3-margin-right w3-text-gray" href="{% url 'delete_post' post.pk %}" title="Edit"><i class="fa fa-trash fa-2x"></i></a>
+                                {% endif %}
+                <br>
+                <hr class="w3-clear">
+                <h1 href="#" class="w3-bar-item w3-buttonw3-hover-none text-decoration-none"><h4 class="w3-text-orange">{{ post.title }}</h4><br></h1>
+                <p>{{ post.body }}</p>
+                  <div class="w3-row-padding" style="margin:0 -16px">
+                    <div class="w3-half">
+                      <img src="https://s.isanook.com/ca/0/ui/279/1396205/download20190701121212_1562562851.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                    </div>
+                    <div class="w3-half">
+                      <img src="https://s.isanook.com/ca/0/ui/279/1396205/s__152616983_1562561120.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+                  </div>
+                </div>
+            
+                <p class="w3-text-orange" >#{{ post.title_tag }}</p>
+               
+                <a href="{% url 'home' %}" class="btn btn-orange w3-right"><h6>Back</h6></a>
+            
+                <button type="button" class="w3-buttonOrange w3-theme-orange w3-margin-bottom"><i class="fa fa-thumbs-up fa-2x"> </i><span class="w3-badge w3-right w3-small w3-theme-orange-red">10</span></button> 
+                <button type="button" class="w3-buttonBlack w3-margin-bottom"><i class="fa fa-comment fa-2x"></i> <span class="w3-badge w3-right w3-small w3-theme-orange-red">5</span></button> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 {% endblock %}
 

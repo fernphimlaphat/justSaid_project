@@ -1,4 +1,5 @@
 # ทำฟอร์ม
+from colorama import Style
 from django import forms
 from .models import Post,Category
 
